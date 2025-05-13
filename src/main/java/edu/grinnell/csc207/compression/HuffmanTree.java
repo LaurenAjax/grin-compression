@@ -98,7 +98,7 @@ public class HuffmanTree {
      * Constructs a new HuffmanTree from the given file.
      * @param in the input file (as a BitInputStream)
      */
-    public HuffmanTree (BitInputStream in) {
+    public HuffmanTree(BitInputStream in) {
         root = HuffmanTreeH(in);
     }
 
@@ -108,7 +108,7 @@ public class HuffmanTree {
      * @param out the output file as a BitOutputStream
      * @param cur the node of the tree we are currently in
      */
-    public void serializeH (BitOutputStream out, Node cur) {
+    public void serializeH(BitOutputStream out, Node cur) {
         if (cur.left == null && cur.right == null) {
             out.writeBit(0);
             out.writeBits(cur.leaf, 9);
@@ -124,7 +124,7 @@ public class HuffmanTree {
      * serialized format.
      * @param out the output file as a BitOutputStream
      */
-    public void serialize (BitOutputStream out) {
+    public void serialize(BitOutputStream out) {
         serializeH(out, root);
     }
    
@@ -137,7 +137,8 @@ public class HuffmanTree {
      * @param map the map this is all being stored in
      * @return a map used to find the code of the data
      */
-    private Map<Short, Integer[]> makeHuffmanTreeMap(Node node, int binary, int depth, Map<Short, Integer[]> map) {
+    private Map<Short, Integer[]> makeHuffmanTreeMap(Node node, int binary, 
+            int depth, Map<Short, Integer[]> map) {
         if (node.left == null && node.right == null) {
             Integer[] code;
             code = new Integer[2];
@@ -181,10 +182,10 @@ public class HuffmanTree {
      * Recursively decodes a stream of huffman codes to bits.
      * @param in the file to decompress.
      * @param out the file to write the decompressed output to.
-     * @param cur the node we are currently in
-     * @return 
+     * @param cur the node we are currently in.
+     * @return whether or not the decoding has been completed.
      */
-    private boolean decodeH (BitInputStream in, BitOutputStream out, Node cur) {
+    private boolean decodeH(BitInputStream in, BitOutputStream out, Node cur) {
         if (cur.left == null && cur.right == null && cur.leaf == (short) 256) {
             return false;
         } else if (cur.left == null && cur.right == null) {
