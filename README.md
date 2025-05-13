@@ -36,4 +36,4 @@ Authors: (_Lauren Ajax_)
 
 ## Revision Log
 
-*   (_TODO: fill in your changes to your project here!_)
+*   (_I fixed my checkstyle violations._)
