@@ -60,7 +60,7 @@ public class BitOutputStream {
      * @param n the number of bits to write from the integer
      */
     public void writeBits(int bits, int n) {
-        for (int i = n-1; i >= 0; i--) {
+        for (int i = n - 1; i >= 0; i--) {
             writeBit((bits >>> i) % 2);
         }
     }
